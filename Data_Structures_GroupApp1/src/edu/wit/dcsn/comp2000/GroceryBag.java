@@ -1,13 +1,21 @@
 package edu.wit.dcsn.comp2000;
 
+//TODO document, define bag types, implement isCorrectType
 public class GroceryBag {
 	private int weightLeft = 10;
 	private int spaceLeft = 10;
-	private int holdingType;
+	private char holdingType;
 
-	public GroceryBag() 
+	public GroceryBag(GroceryItem item) 
 	{
-
+		//add(item);
+		holdingType = getItemType(item);
+	}
+	
+	//TODO
+	public char getItemType(GroceryItem item) {
+		
+		return '?';
 	}
 	
 	public int getWeightLeft()
@@ -20,13 +28,13 @@ public class GroceryBag {
 		return spaceLeft;
 	}//end getSpaceLeft
 	
-	//TODO
+	//TODO define bag types and implement isCorrectType
 	private boolean isCorrectType(GroceryItem item) {
-
+		return holdingType == getItemType(item);
 	}
 	
 	//TODO
 	public boolean canHold(GroceryItem item) {
-		return item.getSize() > spaceLeft && item.getWeight() > weightLeft && isCorrectType(item);
+		return item.getSize().sizeValue > spaceLeft && item.getWeight().weightValue > weightLeft && isCorrectType(item);
 	}
 }
